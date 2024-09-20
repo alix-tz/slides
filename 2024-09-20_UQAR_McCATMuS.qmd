@@ -1,0 +1,350 @@
+---
+title: "McCATMuS"
+subtitle: "Retours sur la production d'un meta-dataset multilingue et multiséculaire"
+author: "Alix Chagué"
+institute: "ALMAnACH Inria / Université de Montréal / Ecole Pratique des Hautes Etudes"
+navigation: horizontal
+date: "2024-09-20"
+format: 
+    revealjs: 
+        scrollable: true
+        smaller: true
+        footer: "20 sept. 2024 - UQAR - Le patrimoine archivistique face au virage numérique"
+    beamer:
+        theme: Warsaw
+        colortheme: seahorse
+---
+
+
+## The Menu
+
+- publication de la vérité de terrain comme livrable valorisable 
+- importance des règles de transcription pour l'agrégation de données 
+- présentation de McCATMuS, un meta-dataset multilingue et multiséculaire 
+
+<!-- -- - HTR-United & l'idée qu'il y a des datasets prêts à être réutilisés - -- -->
+
+## HTR-United
+
+- catalogue de données d'entraînement pour la reconnaissance de l'écriture manuscrite
+- des métadonnées structurées pour chaque dataset
+- pas de modèle, seulement des datasets
+- créé en 2020
+- édité et maintenu par Alix Chagué et Thibault Clérice
+
+## Organisation d'HTR-United
+
+- site internet : 
+    - [htr-united.github.io/](https://htr-united.github.io/)
+    - interface de **consultation** du catalogue, avec des filtres
+    - **formulaire** de description de dataset avec structuration automatique
+    - documentation pour l'utilisation d'outils de **contrôle continu**
+
+- organisation GitHub entièrement publique : 
+    - [github.com/HTR-United](https://github.com/HTR-United)
+    - [répertoire](https://github.com/HTR-United/htr-united) dédié au catalogue
+        - proposition de datasets via *issues* ou *pull requests*
+        - catalogue structuré en YAML et disponible en JSON
+    - [répertoire](https://github.com/HTR-United/schema) dédié au schema de description
+        - espace de discussion pour l'évolution du schéma
+
+## Aperçu du catalogue HTR-United
+
+```{=html}
+
+<iframe
+  src="https://htr-united.github.io/catalog.html"
+  frameborder="1"
+  width="100%"
+  height="500px"
+></iframe>
+
+```
+
+<!--![Aperçu du catalogue HTR-United](./img/htr_united_preview.png){width=85%}-->
+
+## Pourquoi HTR-United ?
+
+- encourager le partage de données et la réutilisation, quel que soit le **logiciel** utilisé
+- améliorer la **visibilité** des datasets (trouvabilité, citation)
+- faciliter l'**accès** aux datasets (lien, licence, condition d'accès)
+<!--- encourager la **réutilisation** (licence, citation)-->
+- sensibiliser à l'importance des **métadonnées** et de la description des datasets
+
+
+<!--## Pourquoi pas de modèles dans HTR-United ?
+
+- pas de compatibilité entre plateformes
+- tous les modèles ne sont pas exportables et distribuables hors plateforme
+- difficulté de maintenance sur le long terme-->
+
+## Contenu du catalogue HTR-United
+
+(v. 0.1.151)
+
+- [htr-united.github.io/visualization/](https://htr-united.github.io/visualization/)
+
+- 102 datasets
+- 26 langues, pour 8 systèmes d'écriture
+- période discontinue de -250 à 2023
+- ~25K pages, ~1.7M lignes, ~65M caractères 
+
+## 
+<!-- HTR-United touche les utilisateurs de différents logiciels-->
+
+![Répartition des logiciels utilisés pour les datasets référencés dans HTR-United](./img/htrunited_software_dist.png){width=85%}
+
+## Un dataset bon élève
+
+Du point de vue de la structure, pas de la vérité de terrain elle-même:
+
+- conditions de réutilisation claires (idéalement CC-BY)
+- format standard (XML ALTO, XML PAGE)
+- images dans les datasets ou informations claires sur comment les obtenir
+<!--- références aux bons noms d'images dans les XML-->
+- règles de transcription explicites et détaillées
+- données de bonne qualité 
+    - transcription homogène
+    - pas de mélange entre données manuelles et automatiques
+    - structuration du répertoire `data/` (par langues, siècles et/ou documents)
+
+## 
+
+Un catalogue comme HTR-United permet aussi d'aggréger des données pour des méta-datasets et des modèles génériques, capables de couvrir un large spectre de mains, de périodes, de types d'écriture, voire de langues.
+
+<!-- -- - CATMuS - comme cadre de réflexion pour l'agrégation de datasets - -- -->
+
+## CATMuS
+
+- principale difficulté pour aggréger des données : l'interopérabilité des règles de transcription
+
+- CATMuS : Consistent Approaches to Transcribing ManuScripts
+- [catmus-guidelines.github.io/](https://catmus-guidelines.github.io/)
+- un ensemble de recommandations pour la transcription
+- spécifiques aux langues latines
+- variations entre documents médiévaux et modernes/contemporains
+- 17 collaborateur-rices (Europe et Amérique du Nord)
+
+## Quelques exemples de recommandations (1)
+
+Recommandatins générales:
+
+- `Numbers MUST be transcribed as they appear in the document, whether as Roman or Arabic numerals.`
+- `Lowercase letters MUST NOT be normalized into capital letters.`
+- `Abbreviations MUST NOT be developped.`
+
+## Quelques exemples de recommandations (2)
+
+Recommandations de transcription:
+
+- `In medieval documents, ramist letters are a distinction of form, and MUST be normalized and transcribed as "i" and "u".`[^ramist]
+- `In modern and contemporary documents, reference marks, such as "*" [U+002A] or "※" [U+203B] MUST be transcribed as "*" [U+002A].`
+- `For in-line corrections, the combination of "⟦" [U+27E6] and "⟧" [U+27E7] MUST be used`
+
+
+[^ramist]: les lettres ramistes sont des lettres qui ressemblent à des "v" et des "j" mais qui sont en fait des "i" et des "u".
+
+## Quelques exemples de recommandations (3)
+
+Recommandations liées à la mise en page:
+
+- `Interlinear corrections MUST NOT be confused with superscript sequential additions.`
+- `Text decoration like underline MUST NOT be transcribed, even using any form of pseudo-markup.`
+
+(D'avantage de détails sur le site)
+
+
+## D'où viennent ces règles ?
+
+Établies sur le base de CREMMALab
+
+- Ariane Pinche. *Guide de transcription pour les manuscrits du Xe au XVe siècle*. 2022. [⟨hal-03697382⟩](https://hal.science/hal-03697382)
+<!--- concertations entre philologues médiévistes, utilisateur-rices de l'HTR et producteur-rices de données
+- étendues par la suite à des documents modernes et contemporains-->
+- alimenté et étendu par des projets de production de données <!--des cas d'usages concrets issues de projets de production de données-->
+    - CREMMA
+    - Gallic(orpor)a
+    - FoNDUE
+    - HTRomance & HTRogène
+    - DEEDS
+
+## Application de CATMuS aux spécifications des projets
+
+- CATMuS est un ensemble de **recommandations**, pas un standard
+- les projets peuvent s'en inspirer, les adapter, les étendre
+- et proposer un scénario de [conversion](https://github.com/PonteIneptique/choco-mufin) vers une version compatible avec CATMuS
+- par exemple: `fichier_1.xml` (spécifique au projet) ⇒ `fichier_1.catmus.xml` (compatible avec CATMuS)
+
+## Modèles et datasets CATMuS
+
+- 3 datasets d'entraînement publics diffusés sur HuggingFace
+    - [catmus-medieval](https://huggingface.co/datasets/CATMuS/medieval)
+    - [catmus-modern ou **McCATMuS**](https://huggingface.co/datasets/CATMuS/modern) (moderne & contemporain)
+    - [catmus-medieval-segmentation](https://huggingface.co/datasets/CATMuS/medieval-segmentation)
+
+- 6 modèles de transcription
+    - [CATMuS Medieval](https://zenodo.org/records/12743230)
+    - [McCATMuS](https://zenodo.org/records/13788177)
+    - CATMuS Print [(Large)](https://zenodo.org/records/10592716), [(Small)](https://zenodo.org/records/10602307) et [(Tiny)](https://zenodo.org/records/10602357)
+    - [CATMuS Gothic Print](https://zenodo.org/records/10599911)
+
+##
+
+CATMuS fournit un cadre pour la définition de bonnes pratiques et l'harmonisation des règles de transcription.
+
+<!-- -- - McCATMuS - Dataset et Modèle - -- -->
+
+## McCATMuS
+
+- un meta-dataset : résultat de l'agrégation et de la conversion de **22** datasets référencés dans HTR-United et compatibles avec CATMuS
+- multilingue : français, français moderne, espagnol, latin, italien, anglais, allemand et occitan
+- multiséculaire : du XVIe siècle au XXIe siècle
+
+> plus d'informations sur la production du dataset McCATMuS : [alix-tz.github.io/phd/categories/catmus/](https://alix-tz.github.io/phd/categories/catmus/)
+
+## Volumétrie de McCATMuS V1
+
+- 118K lignes de **vérité de terrain**
+- 3,8M caractères
+- mélange manuscrits, imprimés et tapuscrits
+- principalement 
+    - des documents de la pratique, 
+    - des documents épistolaires 
+    - des documents littéraires
+<!-- - todo: ajouter distribution Print / Typwritten / Handwritten -->
+
+## 
+
+![Distribution du dataset McCATMuS par langue et par siècle](./img/mccatmus_dataset_rep.png){width=50%}
+
+
+<!-- todo: fix this -->
+<!--
+| Dataset                                                          | N. Chars    | N. Lines   |
+|------------------------------------------------------------------|-------------|------------|
+| alix-tz/moonshines                                               | 31437       | 1016       |
+| alix-tz/peraire-ground-truth                                     | 112084      | 2273       |
+| e-ditiones/OCR17plus                                             | 582593      | 18366      |
+| FoNDUE-HTR/FoNDUE_Wolfflin_Fotosammlung                          | 60247       | 2786       |
+| FoNDUE-HTR/FONDUE-FR-MSS-17                                      | 57099       | 1668       |
+<!--| Gallicorpora/HTR-imprime-17e-siecle                              | 297138      | 8946       |
+| Gallicorpora/HTR-imprime-18e-siecle                              | 174948      | 4500       |
+| HTR-United/cremma-16-17-print                                    | 97208       | 2596       |
+| HTR-United/CREMMA-AN-TestamentDePoilus                           | 99747       | 3330       |
+| HTR-United/CREMMA-MSS-17                                         | 96546       | 2129       |
+| HTR-United/CREMMA-MSS-18                                         | 362865      | 8752       |
+| HTR-United/CREMMA-MSS-19                                         | 63838       | 1807       |
+| HTR-United/CREMMA-MSS-20                                         | 6620        | 224        |
+| HTR-United/cremma-wikipedia                                      | 112750      | 1971       |
+| HTR-United/lectaurep-bronod                                      | 218001      | 3701       |
+| HTR-United/lectaurep-mariages-et-divorces                        | 374830      | 19027      |
+| HTR-United/lectaurep-repertoires                                 | 405094      | 20737      |
+| HTR-United/timeuscorpus                                          | 466566      | 7775       |
+| HTRomance-Project/modern-roman-languages                         | 133648      | 3371       |
+| Proyecto-Ocupacion-Araucania-UChile/HTR_Araucania_XIX            | 113761      | 3240       |
+| PSL-Chartes-HTR-Students/HN2021-Memorials_Jane_Lathrop_Stanford  | 21145       | 763        |
+| **Grand Total**                                                  | **3888165** | **118978** |-->
+
+## Vérité de terrain pour l'HTR mais aussi des métadonnées
+
+```{=html}
+<iframe
+  src="https://huggingface.co/datasets/CATMuS/modern/embed/viewer/default/test"
+  frameborder="1"
+  width="100%"
+  height="430px"
+></iframe>
+```
+
+consultable ici: [https://huggingface.co/datasets/CATMuS/modern](https://huggingface.co/datasets/CATMuS/modern)
+
+## Modèle McCATMuS V1
+
+- entraîné avec **Kraken v4.3.13** en août 2024
+- 90|10 split aléatoire entre train et dev
+- normalisation NFD ; augmentation des données ; batch size de 32 ; learning rate de 0.0001
+- early stopping après 10 époques sans amélioration
+- total époques : 157
+- **Character Accuracy : 92.8%**
+- Word Accuracy : 74.8%
+- **Character Accuracy sur test : 85.24%**
+
+## Courbe d'apprentissage de McCATMuS V1
+
+![Courbe d'apprentissage du modèle McCATMus (montrant character accuracy & word accuracy)](./img/mccatmus_v1_entrainement.png){width=85%}
+
+## Scores sur test de McCATMuS V1
+
+![Scores d'accuracy de McCATMuS, Manu McFrench et McFONDuE sur différentes configuration du test set CATMuS](./img/mccatmus_scores_comp.png){width=85%}
+
+## Futur de McCATMuS
+
+- ajout de nouveaux datasets pour rééquilibrer les langues et les siècles
+- résoudre quelques problèmes sur la V1 du dataset <!--(quelques transcription corrompues)-->
+- poursuivre tests de McCATMus, par exemple en situation de finetuning
+
+
+## Conclusion
+
+En quoi tout ceci est utile aux discussions d'aujourd'hui ?
+
+- HTR-United:
+    - vérité de terrain = livrable valorisable
+    - qualité et documentation des données
+
+- CATMuS:
+    - épineuse question des règles de transcription
+    - cadre(s) pour l'aggrégation et la réutilisation
+
+- McCATMuS:
+    - un modèle et un dataset auxquels NFN pourrait contribuer!
+
+##
+
+<span style="fontsize: 20pt">Merci!</span>
+
+<!--
+
+- impossible d'entraîner un modèle comme McCATMuS sans un catalogue comme HTR-United
+- les guidelines CATMuS offrent un cadre pour favoriser l'aggération de données
+- le dataset McCATMuS a d'autres potentiels d'usage que l'HTR (ex: classification d'écritures et des types d'écriture, détection de langue, etc.)
+- le modèle McCATMuS rejoint une série de modèles génériques développés ces dernières années (ManuMcFrench, McFONDuE, etc.)
+-->
+
+
+<!-- --------------------------------------------- -->
+
+
+<!-- 
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+Right column
+:::
+
+::::
+
+
+## Slide Title {.smaller}
+
+## Slide Title {.scrollable}
+
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+::: footer
+Custom footer text
+:::
+
+## Slide Title {background-color="aquamarine"}
+
+
+-->
+
